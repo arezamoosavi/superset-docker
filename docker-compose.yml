@@ -1,0 +1,30 @@
+version: "3.2"
+
+volumes:
+  mysql_data: {}
+
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+      - "33060"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "maindb"
+      MYSQL_USER: "mainuser"
+      MYSQL_PASSWORD: "mainpass"
+    restart: unless-stopped
+  superset:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: superset
+    ports:
+      - 8088:8088
+    restart: unless-stopped
