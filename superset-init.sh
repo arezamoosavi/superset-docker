@@ -63,7 +63,6 @@ gunicorn \
       -w ${SUP_WEBSERVER_WORKERS} \
       --access-logfile '-' \
       --error-logfile '-' \
-      -k gevent \
       --timeout ${SUP_WEBSERVER_TIMEOUT} \
       -b  0.0.0.0:${SUP_WEBSERVER_PORT} \
       "superset.app:create_app()"
