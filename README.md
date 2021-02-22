@@ -1,5 +1,5 @@
 # superset-docker
-This is a full functionala and light superset docker image.
+This is a full functional and light superset docker image.
 
 ## Pull
 
